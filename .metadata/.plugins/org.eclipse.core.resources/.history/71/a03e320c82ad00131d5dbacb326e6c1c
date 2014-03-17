@@ -1,0 +1,7 @@
+package SE.G04.StrikeMouse.game;
+
+public class Controller {
+	private static final String TAG =  Controller.class.getName();
+	
+	
+}

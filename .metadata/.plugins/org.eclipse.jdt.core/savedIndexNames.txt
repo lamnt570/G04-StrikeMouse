@@ -1,0 +1,25 @@
+INDEX VERSION 1.126+C:\Users\NTLam\Documents\GitHub\G04-StrikeMouse\.metadata\.plugins\org.eclipse.jdt.core
+4108727661.index
+1995173708.index
+1299022128.index
+3916127351.index
+3449353150.index
+3974580528.index
+1498219845.index
+1115467115.index
+2779924788.index
+618777364.index
+30765161.index
+3959978259.index
+3133528496.index
+2446876135.index
+1445261601.index
+3065916431.index
+163172794.index
+305854171.index
+4041092966.index
+888535012.index
+3208411293.index
+2417999844.index
+3208516974.index
+4155206848.index
