@@ -1,10 +1,14 @@
 package SE.G04.StrikeMouse;
 
 import com.badlogic.gdx.ApplicationListener;
+
+import SE.G04.StrikeMouse.game.Assets;
 import SE.G04.StrikeMouse.game.Controller;
 import SE.G04.StrikeMouse.game.Renderer;
+
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL10;
 
 public class StrikeMouseMain implements ApplicationListener {
@@ -16,6 +20,8 @@ public class StrikeMouseMain implements ApplicationListener {
 	@Override 
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		
+		Assets.instance.init(new AssetManager());
 		
 		controller = new Controller();
 		renderer = new Renderer(controller);
@@ -45,11 +51,13 @@ public class StrikeMouseMain implements ApplicationListener {
 	
 	@Override 
 	public void resume () {
+		Assets.instance.init(new AssetManager());
 		paused = false;
 	}
 	
 	@Override 
 	public void dispose () {
 		renderer.dispose();
+		Assets.instance.dispose();
 	}
 }
