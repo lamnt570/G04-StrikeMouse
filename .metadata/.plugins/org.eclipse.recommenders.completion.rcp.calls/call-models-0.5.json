@@ -1,1 +1,22 @@
-{}
+{
+  "C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse\\libs\\gdx.jar": {
+    "location": "C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse\\libs\\gdx.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse\\libs\\gdx.jar\u0027. Neither fingerprint \u0027e9caaf3e96b0fc1d60db9f80ca30091d63fa08c8\u0027 nor symbolic name \u0027gdx\u0027 are known."
+  },
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse\\src": {
+    "location": "C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse\\src\u0027. Skipped."
+  },
+  "C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse-desktop\\libs\\gdx-tools.jar": {
+    "location": "C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse-desktop\\libs\\gdx-tools.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Users\\NTLam\\Documents\\GitHub\\G04-StrikeMouse\\StrikeMouse-desktop\\libs\\gdx-tools.jar\u0027. Neither fingerprint \u002717b47e9833afe21e57a18595edd53475c7c66d03\u0027 nor symbolic name \u0027gdx-tools\u0027 are known."
+  }
+}

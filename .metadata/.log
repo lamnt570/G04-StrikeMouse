@@ -82,3 +82,267 @@ org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
 
 !ENTRY com.google.gdt.eclipse.suite 1 0 2014-03-17 10:20:28.234
 !MESSAGE Registering: com.google.gwt.eclipse.sdkbundle_2.5.1
+!SESSION 2014-03-17 21:22:01.946 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-03-17 21:22:07.662
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-17 21:22:36.611
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2014-03-17 21:24:55.261
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: An error occurred while downloading http://download.eclipse.org/releases/kepler/201402280900/content.jar. The cache file C:\eclipse\p2\org.eclipse.equinox.p2.repository\cache\downloading\content1057315740.jar could not be renamed to C:\eclipse\p2\org.eclipse.equinox.p2.repository\cache\downloading\content1057315740.jar.
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.updateCache(CacheManager.java:371)
+	at org.eclipse.equinox.internal.p2.repository.CacheManager.createCache(CacheManager.java:208)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.getLocalFile(SimpleMetadataRepositoryFactory.java:66)
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:88)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SUBENTRY 1 org.eclipse.equinox.p2.repository 4 0 2014-03-17 21:24:55.263
+!MESSAGE An error occurred while downloading http://download.eclipse.org/releases/kepler/201402280900/content.jar. The cache file C:\eclipse\p2\org.eclipse.equinox.p2.repository\cache\downloading\content1057315740.jar could not be renamed to C:\eclipse\p2\org.eclipse.equinox.p2.repository\cache\downloading\content1057315740.jar.
+!SESSION 2014-03-18 16:50:37.022 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-18 16:50:56.534
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-03-18 19:48:22.951 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -data C:\Users\NTLam\Documents\GitHub\G04-StrikeMouse -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-18 19:48:33.627
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-03-18 19:59:03.078 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -data C:\Users\NTLam\Documents\GitHub\G04-StrikeMouse -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-18 19:59:17.901
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.recommenders.utils.rcp 2 0 2014-03-18 20:00:07.865
+!MESSAGE Can't handle org.eclipse.jdt.internal.compiler.lookup.ProblemBinding@2dc14935 as source for finding entrypoints.
+
+!ENTRY org.eclipse.recommenders.utils.rcp 2 0 2014-03-18 20:00:15.617
+!MESSAGE Can't handle org.eclipse.jdt.internal.compiler.lookup.ProblemBinding@24d39cf as source for finding entrypoints.
+
+!ENTRY org.eclipse.osgi 2 0 2014-03-18 20:28:50.727
+!MESSAGE While loading class "com.google.gdt.eclipse.suite.preferences.GdtPreferences", thread "Thread[Worker-6,5,main]" timed out waiting (5014ms) for thread "Thread[Worker-13,5,main]" to finish starting bundle "com.google.gdt.eclipse.suite_3.5.1.v201312301723-rel-r43 [447]". To avoid deadlock, thread "Thread[Worker-6,5,main]" is proceeding but "com.google.gdt.eclipse.suite.preferences.GdtPreferences" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/com.google.gdt.eclipse.suite_3.5.1.v201312301723-rel-r43.jar" by thread "Worker-13".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.google.appengine.eclipse.wtp.runtime.GaeRuntimeConfigurator.startup(GaeRuntimeConfigurator.java:41)
+	at org.eclipse.wst.server.core.internal.ResourceManager.executeStartups(ResourceManager.java:207)
+	at org.eclipse.wst.server.core.internal.ResourceManager.init(ResourceManager.java:245)
+	at org.eclipse.wst.server.core.internal.ResourceManager.getServers(ResourceManager.java:795)
+	at org.eclipse.wst.server.core.ServerCore.getServers(ServerCore.java:316)
+	at org.eclipse.wst.server.ui.internal.InitializeJob.run(InitializeJob.java:34)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 21 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.google.appengine.eclipse.wtp.runtime.GaeRuntimeConfigurator.startup(GaeRuntimeConfigurator.java:41)
+	at org.eclipse.wst.server.core.internal.ResourceManager.executeStartups(ResourceManager.java:207)
+	at org.eclipse.wst.server.core.internal.ResourceManager.init(ResourceManager.java:245)
+	at org.eclipse.wst.server.core.internal.ResourceManager.getServers(ResourceManager.java:795)
+	at org.eclipse.wst.server.core.ServerCore.getServers(ServerCore.java:316)
+	at org.eclipse.wst.server.ui.internal.InitializeJob.run(InitializeJob.java:34)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2014-03-18 21:59:47.305 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-18 22:00:14.783
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-03-18 22:04:04.994 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-18 22:04:17.191
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-03-20 10:40:01.829 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-03-20 10:40:05.199
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-20 10:40:20.476
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-03-20 14:57:29.656 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-20 14:58:07.829
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.osgi 2 0 2014-03-20 15:00:56.182
+!MESSAGE While loading class "com.google.gdt.eclipse.suite.preferences.GdtPreferences", thread "Thread[Worker-5,5,main]" timed out waiting (5008ms) for thread "Thread[Worker-6,5,main]" to finish starting bundle "com.google.gdt.eclipse.suite_3.5.1.v201312301723-rel-r43 [447]". To avoid deadlock, thread "Thread[Worker-5,5,main]" is proceeding but "com.google.gdt.eclipse.suite.preferences.GdtPreferences" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: State change in progress for bundle "reference:file:plugins/com.google.gdt.eclipse.suite_3.5.1.v201312301723-rel-r43.jar" by thread "Worker-6".
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.google.appengine.eclipse.wtp.runtime.GaeRuntimeConfigurator.startup(GaeRuntimeConfigurator.java:41)
+	at org.eclipse.wst.server.core.internal.ResourceManager.executeStartups(ResourceManager.java:207)
+	at org.eclipse.wst.server.core.internal.ResourceManager.init(ResourceManager.java:245)
+	at org.eclipse.wst.server.core.internal.ResourceManager.getServers(ResourceManager.java:795)
+	at org.eclipse.wst.server.core.ServerCore.getServers(ServerCore.java:316)
+	at org.eclipse.wst.server.ui.internal.InitializeJob.run(InitializeJob.java:34)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+Caused by: org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	... 21 more
+Root exception:
+org.eclipse.osgi.framework.internal.core.AbstractBundle$BundleStatusException
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.beginStateChange(AbstractBundle.java:1088)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.start(AbstractBundle.java:298)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:478)
+	at org.eclipse.osgi.internal.loader.BundleLoader.setLazyTrigger(BundleLoader.java:263)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:109)
+	at org.eclipse.osgi.baseadaptor.loader.ClasspathManager.findLocalClass(ClasspathManager.java:469)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.findLocalClass(DefaultClassLoader.java:216)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:395)
+	at org.eclipse.osgi.internal.loader.SingleSourcePackage.loadClass(SingleSourcePackage.java:35)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:461)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:421)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:412)
+	at org.eclipse.osgi.internal.baseadaptor.DefaultClassLoader.loadClass(DefaultClassLoader.java:107)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.google.appengine.eclipse.wtp.runtime.GaeRuntimeConfigurator.startup(GaeRuntimeConfigurator.java:41)
+	at org.eclipse.wst.server.core.internal.ResourceManager.executeStartups(ResourceManager.java:207)
+	at org.eclipse.wst.server.core.internal.ResourceManager.init(ResourceManager.java:245)
+	at org.eclipse.wst.server.core.internal.ResourceManager.getServers(ResourceManager.java:795)
+	at org.eclipse.wst.server.core.ServerCore.getServers(ServerCore.java:316)
+	at org.eclipse.wst.server.ui.internal.InitializeJob.run(InitializeJob.java:34)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+!SESSION 2014-03-20 16:00:08.872 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2014-03-20 16:00:22.876
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NTLam'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.jobs 2 2 2014-03-20 16:09:23.077
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.google.gdt.eclipse.managedapis.impl.ManagedApiChecker$ManagedApiCheckerJob

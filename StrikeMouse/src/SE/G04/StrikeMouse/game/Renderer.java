@@ -1,8 +1,11 @@
 package SE.G04.StrikeMouse.game;
 
+import sun.print.BackgroundLookupListener;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
+
 import SE.G04.StrikeMouse.util.Constants;
 
 public class Renderer implements Disposable {
@@ -10,14 +13,31 @@ public class Renderer implements Disposable {
 	private SpriteBatch batch;
 	private Controller controller;
 	
-	public Renderer (Controller controller) {}
+	public Renderer (Controller controller) {
+		this.controller = controller;
+		init();
+	}
 	
-	private void init () {}
+	private void init () {
+		batch = new SpriteBatch();
+		camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
+		camera.position.set(0, 0, 0);
+		camera.update();
+	}
 	
-	public void render () {}
+	public void render () {
+		batch.setProjectionMatrix(camera.combined);	
+		batch.begin();
+		controller.backGround.draw(batch);
+		batch.end();
+	}
 	
-	public void resize (int width, int height) {}
+	public void resize (int width, int height) {
+		camera.update();
+	}
 	
 	@Override 
-	public void dispose () {}
+	public void dispose () {
+		batch.dispose();
+	}
 }
