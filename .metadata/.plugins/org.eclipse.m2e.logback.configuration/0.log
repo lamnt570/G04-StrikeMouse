@@ -110,3 +110,7 @@ org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.a
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1426) [org.eclipse.equinox.launcher_1.3.0.v20130327-1440.jar:na]
 2014-03-17 10:13:23,874 [pool-6-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
 2014-03-17 10:13:28,113 [pool-8-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-03-18 19:59:51,933 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-03-18 20:06:25,341 [pool-6-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-03-18 20:06:29,478 [pool-8-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2014-03-18 20:06:34,224 [pool-10-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8

@@ -1,7 +1,0 @@
-package SE.G04.StrikeMouse.game;
-
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.Disposable;
-import SE.G04.StrikeMouse.util.Constants;
-
