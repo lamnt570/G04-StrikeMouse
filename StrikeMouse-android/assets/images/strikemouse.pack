@@ -10,3 +10,10 @@ back_ground
   orig: 720, 432
   offset: 0, 0
   index: -1
+hole
+  rotate: false
+  xy: 724, 320
+  size: 259, 114
+  orig: 259, 114
+  offset: 0, 0
+  index: -1

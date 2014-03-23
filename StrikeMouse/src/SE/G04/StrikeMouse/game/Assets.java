@@ -18,6 +18,8 @@ public class Assets implements Disposable, AssetErrorListener {
 	private AssetManager assetManager;
 	
 	public AssetBackGround backGround;
+	public Assethole hole;
+	//public Assetmouse mouse;
 	
 	private Assets() {}
 	
@@ -36,6 +38,8 @@ public class Assets implements Disposable, AssetErrorListener {
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		backGround = new AssetBackGround(atlas);
+		hole = new Assethole(atlas);
+	//	mouse = new Assetmouse(atlas);
 	}
 	
 	@Override
@@ -57,4 +61,20 @@ public class Assets implements Disposable, AssetErrorListener {
 			backGround = atlas.findRegion("back_ground");
 		}
 	}
+	
+	public class Assethole{
+		public final AtlasRegion hole;
+		
+		public Assethole(TextureAtlas atlas){
+			hole = atlas.findRegion("hole");
+		}
+	}
+	
+//	public class Assetmouse{
+//		public final AtlasRegion mouse;
+//		
+//		public Assetmouse(TextureAtlas atlas){
+//			mouse = atlas.findRegion("mouse");
+//		}
+//	}
 }

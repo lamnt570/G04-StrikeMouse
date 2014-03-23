@@ -29,6 +29,10 @@ public class Renderer implements Disposable {
 		batch.setProjectionMatrix(camera.combined);	
 		batch.begin();
 		controller.backGround.draw(batch);
+		for(int i=0; i<=10; i++){
+		controller.hole[i].draw(batch);
+		}
+		//controller.mouse.draw(batch);
 		batch.end();
 	}
 	
