@@ -28,4 +28,3 @@ public class Main {
 		new LwjglApplication(new StrikeMouseMain(), cfg);
 	}
 }
-

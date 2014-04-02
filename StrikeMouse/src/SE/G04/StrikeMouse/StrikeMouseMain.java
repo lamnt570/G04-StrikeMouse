@@ -61,4 +61,3 @@ public class StrikeMouseMain implements ApplicationListener {
 		Assets.instance.dispose();
 	}
 }
-
