@@ -8,69 +8,62 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Controller {
 	private static final String TAG =  Controller.class.getName();
+	
 	public Sprite backGround;
 	public Sprite[][] holes;
-	public float sum=0;
-	public int currentImage=0;
-	public float changeTime=0.1f;
-	public int Xcurrent,Ycurrent;
 	
+	private float sumTime = 0;
+	private int currentImage = 0;
+	private float changeTime = 0.07f;
+	private int Xcurrent,Ycurrent;
+	private static int delay=0;
 	private Sprite[][][] holesImages;
+	private static Random random;
+	
+	
 	public Controller () {
+		random = new Random();
 		init();
 	}
 	
-	private void init () {
+	public void init () {
 		initBackGround();
 		initHoles();
-		Random rd = new Random();
-		Xcurrent=rd.nextInt(3);
-		Ycurrent=rd.nextInt(3);
+		initMouse();		
 	}
 	
+
 	public static void setImageInfo(Sprite spr, float sizeX, float sizeY, float x, float y){
 		spr.setSize(Constants.VIEWPORT_WIDTH*sizeX, Constants.VIEWPORT_HEIGHT*sizeY);
 		spr.setPosition(Constants.VIEWPORT_WIDTH*(x-sizeX/2), Constants.VIEWPORT_HEIGHT*(y-sizeY/2));
 	}
 	
-	private void initBackGround(){
+	public void initBackGround(){
 		backGround = new Sprite(Assets.instance.backGround.backGround);
 		setImageInfo(backGround, 1, 1, 0, 0);
 	}
 	
 	private static final float sizeWidthMax = 0.25f;	// width of the biggest hole
 	private static final float sizeHeightMax = 0.25f;	// height of the biggest hole
-	private static final float middleX = 0f;			// coordinate of middle hole in Ox
-	private static final float middleY = -5/16f;			// coordinate of middle hole in Oy
-	private static final float deltaX = 5/16f;			// distance between two holes in Ox
-	private static final float deltaY = 0.25f;			// distance between two holes in Oy
-	private static int delay=0;
+	private static final float middleX = 0f;			// coordinate of middle hole in Ox axis
+	private static final float middleY = -5/16f;		// coordinate of middle hole in Oy axis
+	private static final float deltaX = 5/16f;			// distance between two holes in Ox axis
+	private static final float deltaY = 0.25f;			// distance between two holes in Oy axis
+	private static final float[] sizeRatio = {4/6f, 4/5f, 1f}; // ratio between size of holes in row i and size max
+	private static final float[] deltaXRatio = {4/6f, 4/5f, 1f};
+	private static final float[] deltaYRatio = {1.8f, 1f, 0f};
 	
-	private void initHolesImages(){
-		holesImages = new Sprite[3][3][8];
+	public void initHolesImages(){
+		holesImages = new Sprite[3][3][7];
 		
 		for (int i=0; i<3; i++)
 			for (int j=0; j<3; j++)
-				for (int k=0; k<6; k++)
+				for (int k=0; k<6; k++){
 					holesImages[i][j][k] = new Sprite(Assets.instance.holes.holes[k]);
-		
-		for (int j=0; j<3; j++)
-			for (int k=0; k<6; k++)
-				setImageInfo(holesImages[2][j][k],						
-						sizeWidthMax, sizeHeightMax,
-						middleX + (j-1)*deltaX, middleY);
-			
-		for (int j=0; j<3; j++)
-			for (int k=0; k<6; k++)
-				setImageInfo(holesImages[1][j][k], 
-						4/5f*sizeWidthMax, 4/5f*sizeHeightMax,
-						4/5f*(middleX + (j-1)*deltaX), middleY + deltaY);
-		
-		for (int j=0; j<3; j++)
-			for (int k=0; k<6; k++)
-				setImageInfo(holesImages[0][j][k], 
-						4/6f*sizeWidthMax, 4/6f*sizeHeightMax,
-						4/6f*(middleX + (j-1)*deltaX), middleY + 1.8f*deltaY);
+					setImageInfo(holesImages[i][j][k],
+							sizeRatio[i]*sizeWidthMax, sizeRatio[i]*sizeHeightMax,
+							middleX + deltaXRatio[i]*(j-1)*deltaX, middleY + deltaYRatio[i]*deltaY);
+				}
 	}
 
 	public void initHoles(){
@@ -82,10 +75,14 @@ public class Controller {
 				holes[i][j] = holesImages[i][j][0];
 	}
 	
+	public void initMouse(){
+		Xcurrent = random.nextInt(3);
+		Ycurrent = random.nextInt(3);
+	}
+	
 	public void update(float deltaTime) {
-		sum+=deltaTime;
-		Random rd =new Random();
-		if( sum > changeTime){
+		sumTime +=deltaTime;
+		if( sumTime > changeTime){
 			if (currentImage<6) {
 				if(currentImage==5 && delay<1){
 					delay++;
@@ -95,17 +92,16 @@ public class Controller {
 					delay=0;
 				}
 			}
+			
 			if(currentImage==6 ){
 				 holes[Xcurrent][Ycurrent]=holesImages[Xcurrent][Ycurrent][0];
-				 Xcurrent= rd.nextInt(3);
-				 Ycurrent= rd.nextInt(3);
+				 Xcurrent= random.nextInt(3);
+				 Ycurrent= random.nextInt(3);
 				 currentImage=0;
 			}
 			
 			holes[Xcurrent][Ycurrent]=holesImages[Xcurrent][Ycurrent][currentImage];
-			sum=0;
-		}
-		
+			sumTime = 0;
+		}		
 	}
-
 }
