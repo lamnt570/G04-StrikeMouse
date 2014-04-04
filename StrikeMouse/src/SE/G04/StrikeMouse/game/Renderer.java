@@ -3,6 +3,7 @@ package SE.G04.StrikeMouse.game;
 import sun.print.BackgroundLookupListener;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 
@@ -29,7 +30,16 @@ public class Renderer implements Disposable {
 		batch.setProjectionMatrix(camera.combined);	
 		batch.begin();
 		controller.backGround.draw(batch);
+		for( int i = 0;i < 3; i++)
+		{
+			for(int j = 0;j < 3; j++)
+			{
+				controller.holes[i][j].draw(batch);
+			}
+		}
+		
 		batch.end();
+		
 	}
 	
 	public void resize (int width, int height) {

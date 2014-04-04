@@ -16,7 +16,7 @@ public class Main {
 			settings.maxHeight = 1024;
 			settings.debug = drawDebugOutline;
 			TexturePacker2.process(settings, "assets-raw/images",
-						"../StrikeMouse-android/assets/images",	"strikemouse.pack");
+					"../StrikeMouse-android/assets/images",	"strikemouse.pack");
 		}
 		
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();

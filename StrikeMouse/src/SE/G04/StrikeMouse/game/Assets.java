@@ -18,6 +18,7 @@ public class Assets implements Disposable, AssetErrorListener {
 	private AssetManager assetManager;
 	
 	public AssetBackGround backGround;
+	public AssetHoles holes;
 	
 	private Assets() {}
 	
@@ -27,17 +28,17 @@ public class Assets implements Disposable, AssetErrorListener {
 		assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
 		assetManager.finishLoading();
 		
-		Gdx.app.debug(TAG, "# of assets loaded: " + assetManager.getAssetNames().size);
-		for (String str: assetManager.getAssetNames())
-			Gdx.app.debug(TAG, "asset: " + str);
+//		Gdx.app.debug(TAG, "# of assets loaded: " + assetManager.getAssetNames().size);
+//		for (String str: assetManager.getAssetNames())
+//			Gdx.app.debug(TAG, "asset: " + str);
 		
 		TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS_OBJECTS);
 		for (Texture t: atlas.getTextures())
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		backGround = new AssetBackGround(atlas);
+		holes = new AssetHoles(atlas);
 	}
-	
 	@Override
 	public void error(AssetDescriptor asset, Throwable throwable) {
 		Gdx.app.debug(TAG, "Couldn't load asset '" + asset.fileName + "'", 
@@ -52,9 +53,17 @@ public class Assets implements Disposable, AssetErrorListener {
 	
 	public class AssetBackGround{
 		public final AtlasRegion backGround;
-		
 		public AssetBackGround(TextureAtlas atlas){
 			backGround = atlas.findRegion("back_ground");
+		}
+	}
+	
+	public class AssetHoles{
+		public final AtlasRegion holes[];
+		public AssetHoles(TextureAtlas atlas){
+			holes = new AtlasRegion[6];
+			for (char i='0'; i<'6'; i++)
+				holes[i-'0'] = atlas.findRegion(i+"");
 		}
 	}
 }
