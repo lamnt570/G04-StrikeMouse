@@ -1,0 +1,43 @@
+//Indecent exposure
+
+class person {
+        public String name;
+        public String date;
+        public person(String n, Date d){
+            name=n;
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            date=format.format(d);
+        }
+        public String toString(){
+            String p=new String(this.name + "  " + this.date);
+            return p;
+        }
+}
+
+//Refactoring
+
+class person {
+        private String name;
+        private String date;
+        public person(String n, Date d){
+            name=n;
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            date=format.format(d);
+        }
+        public void setName(String n){
+            name= n;
+        }
+        public void setDate(String _date){
+            date=_date;
+        }
+        public String getName(){
+            return name;
+        }
+        public String getDate(){
+            return date;
+        }
+        public String toString(){
+            String p=new String(this.name + "  " + this.date);
+            return p;
+        }
+}

@@ -1,0 +1,29 @@
+//Feature envy:
+private double getAmountForPeriodWithinBudgetPeriod(Period period, BudgetPeriod firstBudgetPeriod) {
+	 	 long amount = getAmountFromBudgetPeriodContainingDate(firstBudgetPeriod.getStartDate());
+	 	 long daysInPeriod = getBudgetPeriodType().getDaysInPeriod(firstBudgetPeriod.getStartDate());
+	 	 long daysBetween = DateUtil.getDaysBetween(period.getStartDate(), period.getEndDate(), true);
+	 	 double amountInPeriod = ((double) amount / (double) daysInPeriod) * daysBetween;
+	 	 return amountInPeriod;
+	 }
+//Refractor
+private double getAmountForPeriodWithinBudgetPeriod(Period period, BudgetPeriod firstBudgetPeriod) {
+	 	 long amount = getAmountFromBudgetPeriodContainingDate(firstBudgetPeriod.getStartDate());
+	 	 long daysInPeriod = firstBudgetPeriod.getAmountOfDays();
+	 	 long daysBetween = period.getAmountOfDays();
+	 	 double amountInPeriod = ((double) amount / (double) daysInPeriod) * daysBetween;
+	 	 return amountInPeriod;
+	 }
+inappropriate intimacy
+public interface IAddressEditor
+{
+    string AddressLine1 { get; set; }
+    string AddressLine2 {get;set;}
+    string City { get; set; }
+    string State { get; set; }
+    string Zip { get; set; }
+    bool IsPrimary { get; set; }
+    bool IsMailing { get; set; }
+    void DataBind();
+    void Validate();
+}

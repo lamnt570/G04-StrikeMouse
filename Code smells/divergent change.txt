@@ -1,0 +1,415 @@
+//Divergent Change
+
+import sun.awt.HorizBagLayout;
+public class vetay extends JPanel implements AdjustmentListener {
+	
+	protected JPanel bigPanel;//tuong duong voi class
+	private JPanel[] panel;
+	private JLabel lbelnameclass;
+	
+	
+	public vetay(int j){
+		
+		bigPanel=new JPanel();
+		bigPanel.setLayout(new GridLayout(3,3));
+		bigPanel.setBackground(Color.white);
+		bigPanel.setBorder(BorderFactory.createLineBorder(Color.black,1));
+		panel=new JPanel[3];
+		panel[0]= new JPanel();
+		panel[1]= new JPanel();
+		panel[2]= new JPanel();
+		this.invalidate();
+		
+		lop temp=FileChooser.caclop.get(j);
+		panel[0].setLayout(new GridLayout(1,0));
+		if(temp.Attribute.size()!=0)
+		panel[1].setLayout(new GridLayout(temp.Attribute.size(),0));
+		if(temp.Method.size()!=0)
+		panel[2].setLayout(new GridLayout(temp.Method.size(),0));
+
+		
+		JLabel lbel=new JLabel(FileChooser.caclop.get(j).NameClass,10);//panel thu nhat
+		lbel.setFont(new Font("Calibri",Font.BOLD,18));
+		//lbel.setSize(panel[0].getSize(),30);
+		panel[0].add(lbel);
+		
+		for(int i=0;i<temp.Attribute.size();i++){//panel thu 2 
+			
+			JLabel jlbel = new JLabel(temp.Attribute.get(i));
+			panel[1].add(jlbel);//panel thu 2
+		}
+		ArrayList<JLabel> arrLbel1 = new ArrayList<JLabel>();
+		for(int i=0;i<temp.Method.size();i++){
+			
+			JLabel jlbel = new JLabel(temp.Method.get(i));
+			panel[2].add(jlbel);
+		}
+		
+		for(int i=0;i<3;i++){//add 3panel vao bigpanel
+			panel[i].setBackground(Color.white);
+			panel[i].setBorder(BorderFactory.createLineBorder(Color.black,1));
+			bigPanel.add(panel[i]);
+		}
+		add(bigPanel);
+	}
+	/*
+	public static void main(String[] args){
+		vetay jp=new vetay();
+	}*/
+
+	/*public void resize(double x, double y) {
+		bigPanel.invalidate();
+		Dimension d= new  Dimension(x,y);
+		bigPanel.setPreferredSize(;
+		
+	}*/
+	//chuc nang zoom 
+	public void adjustmentValueChanged(AdjustmentEvent arg0) {
+		int value = Xuat.scrb.getValue();
+		double width=this.getWidth()*value/50;
+		double height= this.getHeight()*value/50;
+		Dimension d= new Dimension();
+		d.setSize(width, height);
+		bigPanel.invalidate();
+		bigPanel.setPreferredSize(d);
+		System.out.println(value);
+	}
+}
+
+lass Xuat extends panel implements AdjustmentListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JFrame window = new JFrame();
+	JPanel panel= new JPanel();
+	vetay[] jpanel = new vetay[FileChooser.caclop.size()];
+	
+	 
+	static Scrollbar scrb = new Scrollbar(Scrollbar.VERTICAL,50,1,0,255);
+	// di chuyen JPanel
+	MouseEvent pressed ;
+	int x1, x2, y1, y2;
+	Point pPoint;
+	Rectangle bound1, bound2;
+	Point  M, N,X,Y;
+	
+	//kiem tra A co o tren B hay khong
+	public boolean isAaboveB(JPanel a, JPanel b){
+		Rectangle recA = a.getBounds();
+		Rectangle recB = b.getBounds();
+		
+		double y1 = recA.getY();
+		double height1 = recA.getHeight();
+		
+		double y2 = recB.getY();
+		
+		if (y1 + height1 <= y2)
+			return true;
+		return false;
+	}
+	//kiem tra A nam o ben trai B hay khong
+	public boolean isAleftB(JPanel a, JPanel b){
+		Rectangle recA = a.getBounds();
+		Rectangle recB = b.getBounds();
+		
+		double x1 = recA.getX();
+		double width1 = recA.getWidth();
+		
+		double x2 = recB.getX();
+		
+		if (x1 + width1 <= x2)
+			return true;
+		return false;
+	}	
+
+//gan toa do N,M
+	public void AaboveB(JPanel a, JPanel b){
+		Rectangle recA = a.getBounds();
+		Rectangle recB = b.getBounds();
+		
+		int x1 = Integer.parseInt(Long.toString(Math.round(recA.getX())));
+		int y1 = Integer.parseInt(Long.toString(Math.round(recA.getY())));
+		int width1 = Integer.parseInt(Long.toString(Math.round(recA.getWidth())));
+		int height1 = Integer.parseInt(Long.toString(Math.round(recA.getHeight())));
+		
+		int x2 = Integer.parseInt(Long.toString(Math.round(recB.getX())));
+		int y2 = Integer.parseInt(Long.toString(Math.round(recB.getY())));
+		int width2 = Integer.parseInt(Long.toString(Math.round(recB.getWidth())));
+		int height2 = Integer.parseInt(Long.toString(Math.round(recB.getHeight())));
+		
+		M = new Point(Math.round(x1 + width2/2), Math.round(y1+height1));
+		N = new Point(Math.round(x2 + width2/2), Math.round(y2));
+		/*
+
+		if(N.getX()>=10)
+			X.x=N.x-10;
+		if(N.y>=10)
+			X.y=N.y-10;
+			Y.y= N.y-10;
+		if(N.x<=window.getX()-10)
+			Y.x=N.x+10;*/
+	}
+	//gan toa do M,N
+	public void AleftB(JPanel a, JPanel b){
+		Rectangle recA = a.getBounds();
+		Rectangle recB = b.getBounds();
+		
+		int x1 = Integer.parseInt(Long.toString(Math.round(recA.getX())));
+		int y1 = Integer.parseInt(Long.toString(Math.round(recA.getY())));
+		int width1 = Integer.parseInt(Long.toString(Math.round(recA.getWidth())));
+		int height1 = Integer.parseInt(Long.toString(Math.round(recA.getHeight())));
+		
+		int x2 = Integer.parseInt(Long.toString(Math.round(recB.getX())));
+		int y2 = Integer.parseInt(Long.toString(Math.round(recB.getY())));
+		int width2 = Integer.parseInt(Long.toString(Math.round(recB.getWidth())));
+		int height2 = Integer.parseInt(Long.toString(Math.round(recB.getHeight())));
+		
+		M = new Point(Math.round(x1 + width1), Math.round(y1+height1/2));
+		N = new Point(x2, y2+height2/2);
+		
+		if(N.x>=10){
+			X.x=N.x-10;
+			Y.x=N.x-10;
+		}
+		if(N.y>=10)
+			X.y= N.y-10;
+		if(N.y<=window.getY()-10)
+			Y.y=N.y+10;
+	}	
+
+	//Gan toa do M,N
+	public void ArightB(JPanel a, JPanel b){
+		Rectangle recA = a.getBounds();
+		Rectangle recB = b.getBounds();
+		
+		int x1 = Integer.parseInt(Long.toString(Math.round(recA.getX())));
+		int y1 = Integer.parseInt(Long.toString(Math.round(recA.getY())));
+		int width1 = Integer.parseInt(Long.toString(Math.round(recA.getWidth())));
+		int height1 = Integer.parseInt(Long.toString(Math.round(recA.getHeight())));
+		
+		int x2 = Integer.parseInt(Long.toString(Math.round(recB.getX())));
+		int y2 = Integer.parseInt(Long.toString(Math.round(recB.getY())));
+		int width2 = Integer.parseInt(Long.toString(Math.round(recB.getWidth())));
+		int height2 = Integer.parseInt(Long.toString(Math.round(recB.getHeight())));
+		
+		M = new Point(Math.round(x1), Math.round(y1+height1/2));
+		N = new Point(Math.round(x2 + width2), Math.round(y2+height2/2));
+		/*
+		if(N.x<=window.getX()-10){
+			X.x=N.x+10;
+			Y.x=N.x+10;
+		}
+		if(N.y<=window.getY()-10)
+			X.y=N.y+10;
+		if(N.y>=10)
+			Y.y=N.y-10;*/
+	}
+	/*
+	 * 
+	Lang nghe su kien tren JPanel
+	Neu su kien Drag xay ra => di chuyen JPanel
+	*/
+
+	public void addListener(final JPanel jlx){
+		jlx.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {// su kien nhan chuot
+                pressed = e;// lay su kien chuot e
+            }
+        });
+
+        jlx.addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {// chuot keo
+
+                Point pPoint = jlx.getLocation();
+                int x = pPoint.x - pressed.getX() + e.getX();
+                int y = pPoint.y - pressed.getY() + e.getY();
+                jlx.setLocation(x, y);
+				repaint();
+            }
+        });
+	}
+	Xuat(){
+		jpanel = new vetay[FileChooser.caclop.size()];
+		
+		
+		panel.setPreferredSize(new Dimension(1366,768));
+		JScrollPane jScrollPane = new JScrollPane(panel);
+		jScrollPane.setVisible (true);
+		jScrollPane.setBackground(Color.white);
+		jScrollPane.setForeground(Color.blue);
+		
+		scrb.setVisible(true);
+		 		
+		window.setVisible(true);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize (1366, 768); 
+		//window.add(this);
+		window.setTitle("Code to UML");
+		window.add(jScrollPane,BorderLayout.CENTER);
+		
+		this.invalidate();
+		this.setVisible (true); 
+		panel.setVisible(true);
+		panel.setBackground(Color.white);
+		panel.setForeground(Color.blue);
+		panel.invalidate();
+		panel.add(scrb);			
+		
+		for(int i = 0;i<FileChooser.caclop.size();i++){
+			jpanel[i] = new vetay(i);
+			panel.add(jpanel[i]);
+			addListener(jpanel[i]);
+			
+		}
+		
+		
+	}
+	
+	public void drawArrow(JPanel jpanel1, JPanel jpanel2, Graphics g){
+		if (isAaboveB(jpanel2, jpanel1)){
+			AaboveB(jpanel2, jpanel1);			
+		}
+		else
+		if (isAaboveB(jpanel1, jpanel2)){
+			AaboveB(jpanel1, jpanel2);
+		}		
+		else
+		if (isAleftB(jpanel1, jpanel2)){
+			AleftB(jpanel1, jpanel2);
+		}
+		else{
+			ArightB(jpanel1, jpanel2);
+		}	
+		g.setColor(Color.BLACK);
+		g.drawLine(Integer.parseInt(Long.toString(Math.round(M.getX()))), 
+				Integer.parseInt(Long.toString(Math.round(M.getY()))), 
+				Integer.parseInt(Long.toString(Math.round(N.getX()))), 
+				Integer.parseInt(Long.toString(Math.round(N.getY())))
+				);
+	}
+	public void drawArrow1(JPanel jpanel1, JPanel jpanel2, Graphics2D g){
+		if (isAaboveB(jpanel2, jpanel1)){
+			AaboveB(jpanel2, jpanel1);
+		}
+		else
+		if (isAaboveB(jpanel1, jpanel2)){
+			AaboveB(jpanel1, jpanel2);
+		}		
+		else
+		if (isAleftB(jpanel1, jpanel2)){
+			AleftB(jpanel1, jpanel2);
+		}
+		else{
+			ArightB(jpanel1, jpanel2);
+		}
+		g.setColor(Color.BLACK);
+		g.drawLine(Integer.parseInt(Long.toString(Math.round(M.getX()))), 
+				Integer.parseInt(Long.toString(Math.round(M.getY()))), 
+				Integer.parseInt(Long.toString(Math.round(N.getX()))), 
+				Integer.parseInt(Long.toString(Math.round(N.getY())))
+				);
+	}
+	public void drawTri(JPanel jpanel1,JPanel jpanel2,Graphics g){
+		int x[]={X.x,Y.x,N.x};
+		int y[]={X.y,Y.y,N.y};
+		if (isAaboveB(jpanel2, jpanel1)){
+			AaboveB(jpanel2, jpanel1);
+		}
+		else
+		if (isAaboveB(jpanel1, jpanel2)){
+			AaboveB(jpanel1, jpanel2);
+		}		
+		else
+		if (isAleftB(jpanel1, jpanel2)){
+			AleftB(jpanel1, jpanel2);
+		}
+		else{
+			ArightB(jpanel1, jpanel2);
+		}
+		g.drawPolygon(x,y,3);
+		
+	}
+	
+	public void paintComponent(Graphics g){
+		try{
+			super.paintComponent(g);
+			Point[] pPoint;
+			pPoint = new Point[FileChooser.caclop.size()];
+			/*for(int i = 0;i<FileChooser.caclop.size();i++){
+				pPoint[i] = jpanel[i].getLocation();
+			}
+			int i= 0;
+			/*Point pPoint1 = jpanel1.getLocation();
+			Point pPoint2 = jpanel2.getLocation();*/
+			int i;		
+			for(i=0;i<FileChooser.caclop.size();i++){
+				lop lp=FileChooser.caclop.get(i);
+				for(int j=0;j<lp.Dad.size();j++){
+					int index=FileChooser.nameLop.indexOf(lp.Dad.get(j));
+					if(index>=0){
+					drawArrow(jpanel[i], jpanel[index], g);//v? mui tên is-a
+					}
+				}
+			
+			}
+			//ve net dut d? th? hi?n has-a
+			
+			final float dash1[] = {5.0f};
+			final BasicStroke dashed = new BasicStroke(1.0f,
+			            BasicStroke.CAP_BUTT,
+			            BasicStroke.JOIN_MITER,
+			            10.0f, dash1, 0.0f);
+		
+		    Graphics2D g2 = (Graphics2D) g;
+		    
+		    g2.setStroke(dashed);
+			for(i=0;i<FileChooser.caclop.size();i++){
+				lop lp = FileChooser.caclop.get(i);
+				for(int j=0;j<lp.Hasa.size();j++){
+					int index=FileChooser.nameLop.indexOf(lp.Hasa.get(j));
+					if(index>=0){
+					drawArrow1(jpanel[i], jpanel[index], g2);//v? mui tên has-a
+					
+					}
+				}
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		super.paintComponent(g);
+	}
+	public  void initSuKienAdjust(){
+		this.setLayout(new FlowLayout());
+		this.add(scrb);
+		scrb.setLocation(10, 10);
+		scrb.validate();
+		Dimension d= new Dimension(10, 100);
+		scrb.setPreferredSize(d);
+		scrb.addAdjustmentListener(this);
+	}
+	
+	@Override
+	public void adjustmentValueChanged(AdjustmentEvent arg0) {
+		int value = scrb.getValue();
+		for(int i = 0;i<FileChooser.caclop.size();i++){
+			jpanel[i].adjustmentValueChanged(arg0);
+			repaint();
+		}
+	}
+
+}
+
+ublic class lop {
+	lop(String name){
+		NameClass=name;
+	}
+	String NameClass;
+	ArrayList<String> Hasa = new ArrayList<String>();
+	ArrayList<String> Dad =new ArrayList<String>() ;//cha con cua no
+	ArrayList<String> Attribute=new ArrayList<String>();//thuoc tinh
+	ArrayList<String> Method= new ArrayList<String>();//phuong thuc
+	
+}

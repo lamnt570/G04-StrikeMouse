@@ -1,0 +1,30 @@
+//switch case :
+public double calculateArea(int shape) {
+     double area = 0;
+     switch(shape) {
+         case SQUARE:
+             area = a * a;
+             break;
+         case RECTANGLE:
+             area = a * b;
+             break;
+         case CIRCLE:
+             area = Math.PI * r * r;
+             break;
+     }
+     return area;
+ }
+
+//Refrator:
+//dung if
+public double calculateArea(int shape) {
+     double area = 0;
+     
+     if(shape == SQUARE)
+	 area = a * a;
+     if(shape == RECTANGLE)
+	 area = a * b;
+     if(shape == CIRCLE)
+         area = Math.PI * r * r;
+     return area;
+ }

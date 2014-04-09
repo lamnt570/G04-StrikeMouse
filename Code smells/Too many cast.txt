@@ -1,0 +1,28 @@
+//Too many cast:
+if (firstBudgetPeriod.equals(lastBudgetPeriod))
+			 return (long) getAmountForPeriodWithinBudgetPeriod(period, firstBudgetPeriod);
+	 	 
+	 	 double totalStartPeriod = getAmountForOverlappingDays(period, firstBudgetPeriod);
+	 	
+	 	 double totalInMiddle = 0;
+	 	 for (BudgetPeriod budgetPeriod : 
+				 firstBudgetPeriod.nextBudgetPeriod().createBudgetPeriodListTill(lastBudgetPeriod.previousBudgetPeriod())) 
+{
+			 totalInMiddle += getAmountFromBudgetPeriod(budgetPeriod);
+	 	 }
+	 	
+	 	 double totalEndPeriod = getAmountForPeriodWithinBudgetPeriod(new Period(lastBudgetPeriod.getStartDate(), 
+				 period.getEndDate()), lastBudgetPeriod); 
+//Refractor
+if (firstBudgetPeriod.equals(lastBudgetPeriod))
+			 return (long) getAmountForOverlappingDays(period, firstBudgetPeriod);
+	 	 
+	 	 double totalStartPeriod = getAmountForOverlappingDays(period, firstBudgetPeriod);
+	 	
+	 	 double totalInMiddle = 0;
+	 	 for (BudgetPeriod budgetPeriod : 
+				 firstBudgetPeriod.nextBudgetPeriod().createBudgetPeriodListTill(lastBudgetPeriod.previousBudgetPeriod())) {
+			 totalInMiddle += getAmountForOverlappingDays(period, budgetPeriod);
+	 	 }
+	 	
+	 	 double totalEndPeriod = getAmountForOverlappingDays(period, lastBudgetPeriod); 

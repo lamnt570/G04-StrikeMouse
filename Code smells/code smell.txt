@@ -1,0 +1,350 @@
+//dup:
+package org.test.toolkit.file;
+
+public interface FileType {
+
+    public enum Image implements FileType {
+
+        JPG;
+
+        public String toString() {  //duplicated code
+            return "." + super.toString().toLowerCase();
+        };
+    }
+
+    public enum Office implements FileType {
+
+        DOC;
+
+        public String toString() {
+            return "." + super.toString().toLowerCase();
+        };
+    }
+
+    public enum PlainText implements FileType {
+
+        TXT;
+
+        public String toString() {  //duplicated code
+            return "." + super.toString().toLowerCase();
+        };
+    }
+
+}
+re:
+public enum Type
+{
+  Image,Document,Text;
+}
+public enum FileType
+{
+   DOC(Type.Document), JPG(Type.Image),GIF(Type.Image),TXT(Type.Text);
+   private Type type;
+   private FileType(Type t)
+   {
+      this.type=t;
+   }
+   public Type getType()
+   {
+      return type;
+   }
+   public String toString()
+   {
+       return "." + super.toString().toLowerCase();
+   }
+}
+//long parameter list :
+  /**
+    * Instantiate a Person object.
+    * 
+    * @param lastName
+    * @param firstName
+    * @param middleName
+    * @param salutation
+    * @param suffix
+    * @param streetAddress
+    * @param city
+    * @param state
+    * @param isFemale
+    * @param isEmployed
+    * @param isHomeOwner
+    * @return 
+    */
+   public Person createPerson(
+      final String lastName,
+      final String firstName,
+      final String middleName,
+      final String salutation,
+      final String suffix,
+      final String streetAddress,
+      final String city,
+      final String state,
+      final boolean isFemale,
+      final boolean isEmployed,
+      final boolean isHomeOwner)
+   {
+      // implementation goes here
+   }
+re:
+chia thanh cac class nho
+package dustin.examples;
+
+/**
+ * Name representation.
+ * 
+ * @author Dustin
+ */
+public final class Name
+{
+   private final String name;
+
+   public Name(final String newName)
+   {
+      this.name = newName;
+   }
+
+   public String getName()
+   {
+      return this.name;
+   }
+
+   @Override
+   public String toString()
+   {
+      return this.name;
+   }
+}package dustin.examples;
+
+/**
+ * Salutations for individuals' names.
+ * 
+ * @author Dustin
+ */
+public enum Salutation
+{
+   DR,
+   MADAM,
+   MISS,
+   MR,
+   MRS,
+   MS,
+   SIR
+}
+package dustin.examples;
+
+/**
+ * Representation of homeowner status.
+ * 
+ * @author Dustin
+ */
+public enum HomeownerStatus
+{
+   HOME_OWNER,
+   RENTER
+}
+package dustin.examples;
+
+/**
+ * Street Address representation.
+ * 
+ * @author Dustin
+ */
+public final class StreetAddress
+{
+   private final String address;
+
+   public StreetAddress(final String newStreetAddress)
+   {
+      this.address = newStreetAddress;
+   }
+
+   public String getAddress()
+   {
+      return this.address;
+   }
+
+   @Override
+   public String toString()
+   {
+      return this.address;
+   }
+}
+package dustin.examples;
+
+/**
+ * City representation.
+ * 
+ * @author Dustin
+ */
+public final class City
+{
+   private final String cityName;
+
+   public City(final String newCityName)
+   {
+      this.cityName = newCityName;
+   }
+
+   public String getCityName()
+   {
+      return this.cityName;
+   }
+
+   @Override
+   public String toString()
+   {
+      return this.cityName;
+   }
+}
+package dustin.examples;
+
+/**
+ * Simple representation of a state in the United States.
+ * 
+ * @author Dustin
+ */
+public enum State
+{
+   AK,
+   AL,
+   AR,
+   AZ,
+   CA,
+   CO,
+   CT,
+   DE,
+   FL,
+   GA,
+   HI,
+   IA,
+   ID,
+   IL,
+   IN,
+   KS,
+   KY,
+   LA,
+   MA,
+   MD,
+   ME,
+   MI,
+   MN,
+   MO,
+   MS,
+   MT,
+   NC,
+   ND,
+   NE,
+   NH,
+   NJ,
+   NM,
+   NV,
+   NY,
+   OH,
+   OK,
+   OR,
+   PA,
+   RI,
+   SC,
+   SD,
+   TN,
+   TX,
+   UT,
+   VA,
+   VT,
+   WA,
+   WI,
+   WV,
+   WY
+}
+
+
+//feature envy:
+private double getAmountForPeriodWithinBudgetPeriod(Period period, BudgetPeriod firstBudgetPeriod) {
+	 	 long amount = getAmountFromBudgetPeriodContainingDate(firstBudgetPeriod.getStartDate());
+	 	 long daysInPeriod = getBudgetPeriodType().getDaysInPeriod(firstBudgetPeriod.getStartDate());
+	 	 long daysBetween = DateUtil.getDaysBetween(period.getStartDate(), period.getEndDate(), true);
+	 	 double amountInPeriod = ((double) amount / (double) daysInPeriod) * daysBetween;
+	 	 return amountInPeriod;
+	 }
+re:
+private double getAmountForPeriodWithinBudgetPeriod(Period period, BudgetPeriod firstBudgetPeriod) {
+	 	 long amount = getAmountFromBudgetPeriodContainingDate(firstBudgetPeriod.getStartDate());
+	 	 long daysInPeriod = firstBudgetPeriod.getAmountOfDays();
+	 	 long daysBetween = period.getAmountOfDays();
+	 	 double amountInPeriod = ((double) amount / (double) daysInPeriod) * daysBetween;
+	 	 return amountInPeriod;
+	 }
+inappropriate intimacy
+public interface IAddressEditor
+{
+    string AddressLine1 { get; set; }
+    string AddressLine2 {get;set;}
+    string City { get; set; }
+    string State { get; set; }
+    string Zip { get; set; }
+    bool IsPrimary { get; set; }
+    bool IsMailing { get; set; }
+    void DataBind();
+    void Validate();
+}
+//switch case :
+public double calculateArea(int shape) {
+     double area = 0;
+     switch(shape) {
+         case SQUARE:
+             area = a * a;
+             break;
+         case RECTANGLE:
+             area = a * b;
+             break;
+         case CIRCLE:
+             area = Math.PI * r * r;
+             break;
+     }
+     return area;
+ }
+re:
+dung if
+//comment:
+# convert to cents
+a = x * 100
+
+# avg cents per customer 
+avg = a / n
+
+# add to list
+avgs < avg
+t += 1
+re:
+total_cents = total * 100
+average_per_customer = total_cents / customer_count
+
+track_average(average_per_customer)
+//too many cast:
+if (firstBudgetPeriod.equals(lastBudgetPeriod))
+			 return (long) getAmountForPeriodWithinBudgetPeriod(period, firstBudgetPeriod);
+	 	 
+	 	 double totalStartPeriod = getAmountForOverlappingDays(period, firstBudgetPeriod);
+	 	
+	 	 double totalInMiddle = 0;
+	 	 for (BudgetPeriod budgetPeriod : 
+				 firstBudgetPeriod.nextBudgetPeriod().createBudgetPeriodListTill(lastBudgetPeriod.previousBudgetPeriod())) 
+{
+			 totalInMiddle += getAmountFromBudgetPeriod(budgetPeriod);
+	 	 }
+	 	
+	 	 double totalEndPeriod = getAmountForPeriodWithinBudgetPeriod(new Period(lastBudgetPeriod.getStartDate(), 
+				 period.getEndDate()), lastBudgetPeriod); 
+-re:
+if (firstBudgetPeriod.equals(lastBudgetPeriod))
+			 return (long) getAmountForOverlappingDays(period, firstBudgetPeriod);
+	 	 
+	 	 double totalStartPeriod = getAmountForOverlappingDays(period, firstBudgetPeriod);
+	 	
+	 	 double totalInMiddle = 0;
+	 	 for (BudgetPeriod budgetPeriod : 
+				 firstBudgetPeriod.nextBudgetPeriod().createBudgetPeriodListTill(lastBudgetPeriod.previousBudgetPeriod())) {
+			 totalInMiddle += getAmountForOverlappingDays(period, budgetPeriod);
+	 	 }
+	 	
+	 	 double totalEndPeriod = getAmountForOverlappingDays(period, lastBudgetPeriod); 

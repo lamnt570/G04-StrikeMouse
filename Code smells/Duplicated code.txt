@@ -1,0 +1,62 @@
+//CODE SMELLS
+
+//1. Duplicated code 
+
+	//Example:
+
+		package org.test.toolkit.file;
+
+		public interface FileType {
+
+  		  public enum Image implements FileType {
+
+  		      JPG;
+
+    		    public String toString() {  //duplicated code
+    		        return "." + super.toString().toLowerCase();
+    		    };
+   		 }
+
+   		 public enum Office implements FileType {
+
+   		     DOC;
+
+    		    public String toString() {
+    		        return "." + super.toString().toLowerCase();
+       		 };
+  		  }
+
+    		public enum PlainText implements FileType {
+
+        		TXT;
+
+        		public String toString() {  //duplicated code
+            		return "." + super.toString().toLowerCase();
+        		};
+    		}
+
+		}	
+
+	//Refractor:
+
+		public enum Type
+		{
+  		Image,Document,Text;
+		}
+		public enum FileType
+		{
+   		DOC(Type.Document), JPG(Type.Image),GIF(Type.Image),TXT(Type.Text);
+   		private Type type;
+   		private FileType(Type t)
+   		{
+      		this.type=t;
+   		}
+   		public Type getType()
+   		{
+      		return type;
+   		}
+   		public String toString()
+   		{
+       		return "." + super.toString().toLowerCase();
+   		}
+		}

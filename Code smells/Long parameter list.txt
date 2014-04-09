@@ -1,0 +1,79 @@
+//Long parameter list
+ public Person createPerson(
+      final String lastName,
+      final String firstName,
+      final String middleName,
+      final String salutation,
+      final String suffix,
+      final String streetAddress,
+      final String city,
+      final boolean isFemale,
+      final boolean isEmployed,
+      final boolean isHomeOwner)
+   {
+      // implementation goes here
+   }
+//Refractor:
+public final class Name
+{
+   private final String name;
+
+   public Name(final String newName)
+   {
+      this.name = newName;
+   }
+
+   public String getName()
+   {
+      return this.name;
+   }
+
+   @Override
+   public String toString()
+   {
+      return this.name;
+   }
+public enum HomeownerStatus
+{
+   HOME_OWNER,
+   RENTER
+}
+public final class StreetAddress
+{
+   private final String address;
+
+   public StreetAddress(final String newStreetAddress)
+   {
+      this.address = newStreetAddress;
+   }
+
+   public String getAddress()
+   {
+      return this.address;
+   }
+
+   @Override
+   public String toString()
+   {
+      return this.address;
+   }
+}
+public final class City
+{
+   private final String cityName;
+
+   public City(final String newCityName)
+   {
+      this.cityName = newCityName;
+   }
+
+   public String getCityName()
+   {
+      return this.cityName;
+   }
+   @Override
+   public String toString()
+   {
+      return this.cityName;
+   }
+}
