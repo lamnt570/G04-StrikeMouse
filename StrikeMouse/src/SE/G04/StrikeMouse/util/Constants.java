@@ -8,4 +8,8 @@ public class Constants {
 	public static final float VIEWPORT_HEIGHT = Gdx.graphics.getHeight();
 	
 	public static final String TEXTURE_ATLAS_OBJECTS = "images/strikemouse.pack";
+
+	public static final float VIEWPORT_GUI_WIDTH = Gdx.graphics.getWidth();
+	
+	public static final float VIEWPORT_GUI_HEIGHT = Gdx.graphics.getHeight();
 }
