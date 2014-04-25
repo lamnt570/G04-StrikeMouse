@@ -3,9 +3,21 @@ package SE.G04.StrikeMouse.util;
 import com.badlogic.gdx.Gdx;
 
 public class Constants {
-	public static final float VIEWPORT_WIDTH = Gdx.graphics.getWidth();
+//	public static final float VIEWPORT_WIDTH = Gdx.graphics.getWidth();
+	public static final float VIEWPORT_WIDTH = 1;
 	
-	public static final float VIEWPORT_HEIGHT = Gdx.graphics.getHeight();
+//	public static final float VIEWPORT_HEIGHT = Gdx.graphics.getHeight();
+	public static final float VIEWPORT_HEIGHT = 1;
 	
 	public static final String TEXTURE_ATLAS_OBJECTS = "images/strikemouse.pack";
+
+	public static final float UPDATE_INTERVAL = 0.07f;
+
+	public static final int MAX_MOUSE_IMAGE = 6;
+
+	public static final int LAST_IMAGE_DELAY = 1;
+
+	public static final int HOLE_ROWS = 3;
+	
+	public static final int HOLE_COLUMNS = 3;
 }

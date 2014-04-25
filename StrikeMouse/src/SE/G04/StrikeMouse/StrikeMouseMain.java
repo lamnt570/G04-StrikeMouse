@@ -24,6 +24,7 @@ public class StrikeMouseMain implements ApplicationListener {
 		Assets.instance.init(new AssetManager());
 		
 		controller = new Controller();
+		controller.init();
 		renderer = new Renderer(controller);
 		
 		paused = false;
