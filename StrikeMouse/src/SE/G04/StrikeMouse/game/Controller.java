@@ -11,6 +11,7 @@ public class Controller {
 
 	public Sprite backGround;
 	public Sprite[][] holes;
+	public int score;
 
 	private float totalDeltaTime = 0;
 	private int currentImage = 0;
@@ -19,14 +20,17 @@ public class Controller {
 	private Sprite[][][] holesImages;
 	private static Random random;
 
-	public void init() {
+	public Controller() {
 		random = new Random();
+		init();
+
+	}
+
+	public void init() {
 
 		initBackGround();
-
 		initHolesImages();
 		initHoles();
-
 		initMouse();
 	}
 
@@ -120,35 +124,35 @@ public class Controller {
 		if (currentImage == (Constants.MAX_MOUSE_IMAGE - 1))
 			if (delay < Constants.LAST_IMAGE_DELAY)
 				delay++;
-			else{
+			else {
 				currentImage++;
 				delay = 0;
 			}
 		else
 			currentImage++;
 	}
-	
-	public void checkCurrentImage(){
+
+	public void checkCurrentImage() {
 		if (currentImage == Constants.MAX_MOUSE_IMAGE) {
 			holes[Xcurrent][Ycurrent] = holesImages[Xcurrent][Ycurrent][0];
 			Xcurrent = random.nextInt(Constants.HOLE_ROWS);
 			Ycurrent = random.nextInt(Constants.HOLE_COLUMNS);
 			currentImage = 0;
-		}		
+		}
 	}
-	
-	public void updateHoleImage(){
+
+	public void updateHoleImage() {
 		holes[Xcurrent][Ycurrent] = holesImages[Xcurrent][Ycurrent][currentImage];
 	}
-	
+
 	public void update(float deltaTime) {
 		totalDeltaTime += deltaTime;
 
 		if (totalDeltaTime >= Constants.UPDATE_INTERVAL) {
-			updateCurrentImage();			
+			updateCurrentImage();
 			checkCurrentImage();
 			updateHoleImage();
-			
+
 			totalDeltaTime = 0;
 		}
 	}
