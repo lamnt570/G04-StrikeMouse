@@ -4,6 +4,9 @@ import java.util.Random;
 
 import SE.G04.StrikeMouse.util.Constants;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Controller {
@@ -15,19 +18,21 @@ public class Controller {
 
 	private float totalDeltaTime = 0;
 	private int currentImage = 0;
-	private int Xcurrent, Ycurrent;
+	private int currentX, currentY;
 	private static int delay = 0;
 	private Sprite[][][] holesImages;
 	private static Random random;
 
+	private float hammerX;
+	private float hammerY;
+	private boolean mouseIsAlive;
+
 	public Controller() {
 		random = new Random();
 		init();
-
 	}
 
 	public void init() {
-
 		initBackGround();
 		initHolesImages();
 		initHoles();
@@ -108,8 +113,9 @@ public class Controller {
 	}
 
 	public void initMouse() {
-		Xcurrent = random.nextInt(Constants.HOLE_ROWS);
-		Ycurrent = random.nextInt(Constants.HOLE_COLUMNS);
+		currentX = random.nextInt(Constants.HOLE_ROWS);
+		currentY = random.nextInt(Constants.HOLE_COLUMNS);
+		mouseIsAlive = true;
 	}
 
 	public float getTotalDeltaTime() {
@@ -134,15 +140,65 @@ public class Controller {
 
 	public void checkCurrentImage() {
 		if (currentImage == Constants.MAX_MOUSE_IMAGE) {
-			holes[Xcurrent][Ycurrent] = holesImages[Xcurrent][Ycurrent][0];
-			Xcurrent = random.nextInt(Constants.HOLE_ROWS);
-			Ycurrent = random.nextInt(Constants.HOLE_COLUMNS);
+			holes[currentX][currentY] = holesImages[currentX][currentY][0];
+			currentX = random.nextInt(Constants.HOLE_ROWS);
+			currentY = random.nextInt(Constants.HOLE_COLUMNS);
+			mouseIsAlive = true;
 			currentImage = 0;
 		}
 	}
 
 	public void updateHoleImage() {
-		holes[Xcurrent][Ycurrent] = holesImages[Xcurrent][Ycurrent][currentImage];
+		holes[currentX][currentY] = holesImages[currentX][currentY][currentImage];
+	}
+
+	public float getInputX() {
+		float x = Gdx.input.getX();
+		x /= Gdx.graphics.getWidth();
+		x -= 0.5f;
+		return x;
+	}
+
+	public float getInputY() {
+		float y = Gdx.input.getY();
+		y /= Gdx.graphics.getHeight();
+		y -= 0.5f;
+		y *= -1;
+		return y;
+	}
+
+	public boolean checkHammerHit() {
+		if (!mouseIsAlive)
+			return false;
+		
+		float width = holes[currentX][currentY].getWidth();
+		float height = holes[currentX][currentY].getHeight();
+		
+		float minX = holes[currentX][currentY].getX();
+		float minY = holes[currentX][currentY].getY();
+		float maxX = minX + width;
+		float maxY = minY + +height;
+		
+		minX += width/6f;
+		maxX -= width/6f;
+		if ((minX <= hammerX) && (hammerX <= maxX))
+			if ((minY <= hammerY) && (hammerY <= maxY))
+				return true;
+		
+		return false;
+	}
+
+	public void handleUserInput() {
+		if (Gdx.app.getType() == ApplicationType.Desktop) {
+			if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
+				hammerX = getInputX();
+				hammerY = getInputY();
+				if (checkHammerHit()) {
+					score++;
+					mouseIsAlive = false;
+				}
+			}
+		}
 	}
 
 	public void update(float deltaTime) {
@@ -155,5 +211,7 @@ public class Controller {
 
 			totalDeltaTime = 0;
 		}
+
+		handleUserInput();
 	}
 }
