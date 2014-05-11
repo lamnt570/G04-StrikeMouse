@@ -12,7 +12,7 @@ public class Constants {
 
 	public static final float UPDATE_INTERVAL = 0.1f;
 
-	public static final int MAX_MOUSE_IMAGE = 6;
+	public static final int MAX_ALIVE_MOUSE_IMAGE = 6;
 
 	public static final int LAST_IMAGE_DELAY = 1;
 
@@ -33,5 +33,7 @@ public class Constants {
 	public static final int MAX_HAMMER_IMAGE = 3;
 
 	public static final float HAMMER_UPDATE_INTERVAL = 0.05f;
+
+	public static final int MAX_HIT_MOUSE_IMAGE = 3;
 
 }

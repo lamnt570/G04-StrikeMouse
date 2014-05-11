@@ -1,5 +1,7 @@
 package SE.G04.StrikeMouse.game;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetDescriptor;
@@ -42,8 +44,8 @@ public class Assets implements Disposable, AssetErrorListener {
 
 	@Override
 	public void error(AssetDescriptor asset, Throwable throwable) {
-		 Gdx.app.debug(TAG, "Couldn't load asset '" + asset.fileName + "'",
-		 (Exception) throwable);
+		Gdx.app.debug(TAG, "Couldn't load asset '" + asset.fileName + "'",
+				(Exception) throwable);
 	}
 
 	@Override
@@ -64,10 +66,14 @@ public class Assets implements Disposable, AssetErrorListener {
 		public final AtlasRegion holes[];
 
 		public AssetHoles(TextureAtlas atlas) {
-			holes = new AtlasRegion[Constants.MAX_MOUSE_IMAGE];
-			for (int i = 0; i < Constants.MAX_MOUSE_IMAGE; i++) {
-				holes[i] = atlas.findRegion(i + "");
-			}
+			holes = new AtlasRegion[Constants.MAX_ALIVE_MOUSE_IMAGE
+					+ Constants.MAX_HIT_MOUSE_IMAGE];
+			for (int i = 0; i < holes.length; i++)
+				if (i < Constants.MAX_ALIVE_MOUSE_IMAGE)
+					holes[i] = atlas.findRegion("alive_mouse" + i);
+				else
+					holes[i] = atlas.findRegion("hit_mouse"
+							+ (i - Constants.MAX_ALIVE_MOUSE_IMAGE));
 		}
 	}
 
@@ -86,10 +92,10 @@ public class Assets implements Disposable, AssetErrorListener {
 
 	public class AssetHammers {
 		public final AtlasRegion hammers[];
-		
-		public AssetHammers(TextureAtlas atlas){
+
+		public AssetHammers(TextureAtlas atlas) {
 			hammers = new AtlasRegion[Constants.MAX_HAMMER_IMAGE];
-			for (int i=0; i < Constants.MAX_HAMMER_IMAGE; i++){
+			for (int i = 0; i < Constants.MAX_HAMMER_IMAGE; i++) {
 				hammers[i] = atlas.findRegion("hammer" + i);
 			}
 		}

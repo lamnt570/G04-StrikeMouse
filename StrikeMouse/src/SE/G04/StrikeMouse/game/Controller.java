@@ -84,18 +84,19 @@ public class Controller {
 	private static final float[] deltaYRatio = { 1.8f, 1f, 0f };
 
 	public void createHolesImagesArray() {
-		holesImages = new Sprite[Constants.HOLE_ROWS][Constants.HOLE_COLUMNS][Constants.MAX_MOUSE_IMAGE];
+		holesImages = new Sprite[Constants.HOLE_ROWS][Constants.HOLE_COLUMNS][Constants.MAX_ALIVE_MOUSE_IMAGE
+				+ Constants.MAX_HIT_MOUSE_IMAGE];
 
 		for (int i = 0; i < Constants.HOLE_ROWS; i++)
 			for (int j = 0; j < Constants.HOLE_COLUMNS; j++)
-				for (int k = 0; k < Constants.MAX_MOUSE_IMAGE; k++)
+				for (int k = 0; k < holesImages[i][j].length; k++)
 					holesImages[i][j][k] = new Sprite();
 	}
 
 	public void loadHolesImages() {
 		for (int i = 0; i < Constants.HOLE_ROWS; i++)
 			for (int j = 0; j < Constants.HOLE_COLUMNS; j++)
-				for (int k = 0; k < Constants.MAX_MOUSE_IMAGE; k++)
+				for (int k = 0; k < holesImages[i][j].length; k++)
 					holesImages[i][j][k]
 							.setRegion(Assets.instance.holes.holes[k]);
 	}
@@ -103,7 +104,7 @@ public class Controller {
 	public void setHolesImagesInfo() {
 		for (int i = 0; i < Constants.HOLE_ROWS; i++)
 			for (int j = 0; j < Constants.HOLE_COLUMNS; j++)
-				for (int k = 0; k < Constants.MAX_MOUSE_IMAGE; k++)
+				for (int k = 0; k < holesImages[i][j].length; k++)
 					setImageInfo(holesImages[i][j][k], sizeRatio[i]
 							* sizeWidthMax, sizeRatio[i] * sizeHeightMax,
 							middleX + deltaXRatio[i] * (j - 1) * maxDeltaX,
@@ -147,19 +148,28 @@ public class Controller {
 	}
 
 	public void updateCurrentImage() {
-		if (currentImage == (Constants.MAX_MOUSE_IMAGE - 1))
-			if (delay < Constants.LAST_IMAGE_DELAY)
-				delay++;
-			else {
+		if (mouseIsAlive) {
+			if (currentImage == (Constants.MAX_ALIVE_MOUSE_IMAGE - 1))
+				if (delay < Constants.LAST_IMAGE_DELAY)
+					delay++;
+				else {
+					currentImage++;
+					delay = 0;
+				}
+			else
 				currentImage++;
-				delay = 0;
-			}
-		else
-			currentImage++;
+		} else {
+			if (currentImage < Constants.MAX_ALIVE_MOUSE_IMAGE)
+				currentImage = Constants.MAX_ALIVE_MOUSE_IMAGE;
+			else
+				currentImage++;
+		}
 	}
 
 	public void checkCurrentImage() {
-		if (currentImage == Constants.MAX_MOUSE_IMAGE) {
+		if (((mouseIsAlive) && (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE))
+				|| (!mouseIsAlive) && (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE
+						+ Constants.MAX_HIT_MOUSE_IMAGE)) {
 			holes[currentX][currentY] = holesImages[currentX][currentY][0];
 			currentX = random.nextInt(Constants.HOLE_ROWS);
 			currentY = random.nextInt(Constants.HOLE_COLUMNS);
@@ -208,14 +218,15 @@ public class Controller {
 		return false;
 	}
 
-	public void setHammersImagesPosition(float x, float y){
+	public void setHammersImagesPosition(float x, float y) {
 		float width = hammersImages[0].getWidth();
 		float height = hammersImages[0].getHeight();
-		for (int i=0; i<Constants.MAX_HAMMER_IMAGE; i++)
-			hammersImages[i].setPosition(Constants.VIEWPORT_WIDTH * (x - width / 2),
-					Constants.VIEWPORT_HEIGHT * (y - height / 2));
+		for (int i = 0; i < Constants.MAX_HAMMER_IMAGE; i++)
+			hammersImages[i].setPosition(Constants.VIEWPORT_WIDTH
+					* (x - width / 2), Constants.VIEWPORT_HEIGHT
+					* (y - height / 2));
 	}
-	
+
 	public void handleUserInput() {
 		if (Gdx.app.getType() == ApplicationType.Desktop) {
 			if (!hammerIsOn) {
@@ -226,7 +237,7 @@ public class Controller {
 						score++;
 						mouseIsAlive = false;
 					}
-					
+
 					hammerIsOn = true;
 					setHammersImagesPosition(hammerX, hammerY);
 					currentHammerImage = 0;
@@ -255,10 +266,10 @@ public class Controller {
 				if (currentHammerImage == Constants.MAX_HAMMER_IMAGE) {
 					hammerIsOn = false;
 					currentHammerImage = 0;
-				}else{
+				} else {
 					hammer = hammersImages[currentHammerImage];
 				}
-				
+
 				totalDeltaTimeHammer = 0;
 			}
 		}
