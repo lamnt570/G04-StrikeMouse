@@ -20,6 +20,7 @@ public class Assets implements Disposable, AssetErrorListener {
 	public AssetBackGround backGround;
 	public AssetHoles holes;
 	public AssetFonts fonts;
+	public AssetHammers hammers;
 
 	private Assets() {
 	}
@@ -36,13 +37,13 @@ public class Assets implements Disposable, AssetErrorListener {
 		backGround = new AssetBackGround(atlas);
 		holes = new AssetHoles(atlas);
 		fonts = new AssetFonts();
-
+		hammers = new AssetHammers(atlas);
 	}
 
 	@Override
 	public void error(AssetDescriptor asset, Throwable throwable) {
-		Gdx.app.debug(TAG, "Couldn't load asset '" + asset.fileName + "'",
-				(Exception) throwable);
+		 Gdx.app.debug(TAG, "Couldn't load asset '" + asset.fileName + "'",
+		 (Exception) throwable);
 	}
 
 	@Override
@@ -80,6 +81,17 @@ public class Assets implements Disposable, AssetErrorListener {
 			defaultBigFonts.getRegion().getTexture()
 					.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 
+		}
+	}
+
+	public class AssetHammers {
+		public final AtlasRegion hammers[];
+		
+		public AssetHammers(TextureAtlas atlas){
+			hammers = new AtlasRegion[Constants.MAX_HAMMER_IMAGE];
+			for (int i=0; i < Constants.MAX_HAMMER_IMAGE; i++){
+				hammers[i] = atlas.findRegion("hammer" + i);
+			}
 		}
 	}
 

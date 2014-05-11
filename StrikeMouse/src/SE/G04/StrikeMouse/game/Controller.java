@@ -12,20 +12,31 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class Controller {
 	private static final String TAG = Controller.class.getName();
 
-	public Sprite backGround;
-	public Sprite[][] holes;
+	private static Random random;
+
 	public int score;
 
+	public Sprite backGround;
+	public Sprite[][] holes;
+	public Sprite hammer;
+
+	private Sprite[][][] holesImages;
+	private Sprite[] hammersImages;
+
 	private float totalDeltaTime = 0;
+	private float totalDeltaTimeHammer = 0;
+	private int delay = 0;
+
 	private int currentImage = 0;
 	private int currentX, currentY;
-	private static int delay = 0;
-	private Sprite[][][] holesImages;
-	private static Random random;
+	private int currentHammerImage = 0;
 
 	private float hammerX;
 	private float hammerY;
+
 	private boolean mouseIsAlive;
+
+	public boolean hammerIsOn = false;
 
 	public Controller() {
 		random = new Random();
@@ -37,6 +48,7 @@ public class Controller {
 		initHolesImages();
 		initHoles();
 		initMouse();
+		initHammerImages();
 	}
 
 	public static void setImageInfo(Sprite spr, float sizeX, float sizeY,
@@ -118,6 +130,14 @@ public class Controller {
 		mouseIsAlive = true;
 	}
 
+	public void initHammerImages() {
+		hammersImages = new Sprite[Constants.MAX_HAMMER_IMAGE];
+		for (int i = 0; i < Constants.MAX_HAMMER_IMAGE; i++) {
+			hammersImages[i] = new Sprite(Assets.instance.hammers.hammers[i]);
+			setImageInfo(hammersImages[i], 1 / 5f, 1 / 5f, 0, 0);
+		}
+	}
+
 	public float getTotalDeltaTime() {
 		return totalDeltaTime;
 	}
@@ -170,32 +190,47 @@ public class Controller {
 	public boolean checkHammerHit() {
 		if (!mouseIsAlive)
 			return false;
-		
+
 		float width = holes[currentX][currentY].getWidth();
 		float height = holes[currentX][currentY].getHeight();
-		
+
 		float minX = holes[currentX][currentY].getX();
 		float minY = holes[currentX][currentY].getY();
 		float maxX = minX + width;
 		float maxY = minY + +height;
-		
-		minX += width/6f;
-		maxX -= width/6f;
+
+		minX += width / 6f;
+		maxX -= width / 6f;
 		if ((minX <= hammerX) && (hammerX <= maxX))
 			if ((minY <= hammerY) && (hammerY <= maxY))
 				return true;
-		
+
 		return false;
 	}
 
+	public void setHammersImagesPosition(float x, float y){
+		float width = hammersImages[0].getWidth();
+		float height = hammersImages[0].getHeight();
+		for (int i=0; i<Constants.MAX_HAMMER_IMAGE; i++)
+			hammersImages[i].setPosition(Constants.VIEWPORT_WIDTH * (x - width / 2),
+					Constants.VIEWPORT_HEIGHT * (y - height / 2));
+	}
+	
 	public void handleUserInput() {
 		if (Gdx.app.getType() == ApplicationType.Desktop) {
-			if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
-				hammerX = getInputX();
-				hammerY = getInputY();
-				if (checkHammerHit()) {
-					score++;
-					mouseIsAlive = false;
+			if (!hammerIsOn) {
+				if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
+					hammerX = getInputX();
+					hammerY = getInputY();
+					if (checkHammerHit()) {
+						score++;
+						mouseIsAlive = false;
+					}
+					
+					hammerIsOn = true;
+					setHammersImagesPosition(hammerX, hammerY);
+					currentHammerImage = 0;
+					hammer = hammersImages[currentHammerImage];
 				}
 			}
 		}
@@ -213,5 +248,19 @@ public class Controller {
 		}
 
 		handleUserInput();
+		if (hammerIsOn) {
+			totalDeltaTimeHammer += deltaTime;
+			if (totalDeltaTimeHammer >= Constants.HAMMER_UPDATE_INTERVAL) {
+				currentHammerImage++;
+				if (currentHammerImage == Constants.MAX_HAMMER_IMAGE) {
+					hammerIsOn = false;
+					currentHammerImage = 0;
+				}else{
+					hammer = hammersImages[currentHammerImage];
+				}
+				
+				totalDeltaTimeHammer = 0;
+			}
+		}
 	}
 }

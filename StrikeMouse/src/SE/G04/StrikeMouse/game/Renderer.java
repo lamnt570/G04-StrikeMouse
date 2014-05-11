@@ -43,10 +43,10 @@ public class Renderer implements Disposable {
 		for (int i = 0; i < Constants.HOLE_ROWS; i++)
 			for (int j = 0; j < Constants.HOLE_COLUMNS; j++)
 				controller.holes[i][j].draw(batch);
-
+		if (controller.hammerIsOn)
+			controller.hammer.draw(batch);
 		batch.end();
 		renderGUI(batch);
-
 	}
 
 	private void renderGUI(SpriteBatch batch) {

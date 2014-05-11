@@ -10,7 +10,7 @@ public class Constants {
 
 	public static final String TEXTURE_ATLAS_OBJECTS = "images/strikemouse.pack";
 
-	public static final float UPDATE_INTERVAL = 0.07f;
+	public static final float UPDATE_INTERVAL = 0.1f;
 
 	public static final int MAX_MOUSE_IMAGE = 6;
 
@@ -29,5 +29,9 @@ public class Constants {
 	public static final float SCORE_POSITION_HEIGHT = 33;
 
 	public static final float STRING_SCORE_POSITON_WIDTH = 335;
+
+	public static final int MAX_HAMMER_IMAGE = 3;
+
+	public static final float HAMMER_UPDATE_INTERVAL = 0.05f;
 
 }
