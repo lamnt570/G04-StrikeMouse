@@ -168,7 +168,8 @@ public class Controller {
 
 	public void checkCurrentImage() {
 		if (((mouseIsAlive) && (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE))
-				|| (!mouseIsAlive) && (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE
+				|| (!mouseIsAlive)
+				&& (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE
 						+ Constants.MAX_HIT_MOUSE_IMAGE)) {
 			holes[currentX][currentY] = holesImages[currentX][currentY][0];
 			currentX = random.nextInt(Constants.HOLE_ROWS);
@@ -228,7 +229,8 @@ public class Controller {
 	}
 
 	public void handleUserInput() {
-		if (Gdx.app.getType() == ApplicationType.Desktop) {
+		if ((Gdx.app.getType() == ApplicationType.Desktop)
+				|| (Gdx.app.getType() == ApplicationType.Android)) {
 			if (!hammerIsOn) {
 				if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
 					hammerX = getInputX();
