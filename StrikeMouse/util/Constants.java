@@ -36,6 +36,4 @@ public class Constants {
 
 	public static final int MAX_HIT_MOUSE_IMAGE = 3;
 
-	public static final int MAX_MOUSE_IMAGE = 12;
-
 }
