@@ -15,7 +15,6 @@ public class Controller {
 	private static Random random;
 
 	public int score;
-	public int lives = Constants.LIVES_START;
 
 	public Sprite backGround;
 	public Sprite[][] holes;
@@ -238,10 +237,6 @@ public class Controller {
 						score++;
 						mouseIsAlive = false;
 					}
-					else {
-						lives --;
-						mouseIsAlive = true;
-					}
 
 					hammerIsOn = true;
 					setHammersImagesPosition(hammerX, hammerY);
@@ -278,20 +273,5 @@ public class Controller {
 				totalDeltaTimeHammer = 0;
 			}
 		}
-		
-		if(isGameOver()== true){
-			lives =0;
-			backToMenu();
-			
-		}
-	}
-	public boolean isGameOver (){
-		if( lives <=0)
-			return true;
-		else return false;
-	}
-	
-	private void backToMenu(){
-		
 	}
 }

@@ -69,38 +69,12 @@ public class Renderer implements Disposable {
 	private void renderGui(SpriteBatch batch) {
 		BitmapFont scoreFont = Assets.instance.fonts.defaultBigFonts;
 		Assets.instance.fonts.defaultBigFonts.draw(batch,
-				"" + controller.score, Constants.SCORE_POSITION_WIDTH+150,
+				"" + controller.score, Constants.SCORE_POSITION_WIDTH,
 				Constants.SCORE_POSITION_HEIGHT);
 		Assets.instance.fonts.defaultBigFonts.draw(batch, "" + "SCORE",
-				Constants.STRING_SCORE_POSITON_WIDTH+170,
+				Constants.STRING_SCORE_POSITON_WIDTH,
 				Constants.SCORE_POSITION_HEIGHT);
-
 		scoreFont.setColor(1, 0, 0, 1);
-		renderGuiExtraLive(batch);
-		renderGuiGameOverMessage(batch);
-
-	}
-
-	private void renderGuiExtraLive(SpriteBatch batch) {
-		for (int i = 0; i < Constants.LIVES_START; i++) {
-			Assets.instance.fonts.defaultBigFonts.draw(batch, ""
-					+ controller.lives, Constants.SCORE_POSITION_WIDTH - 200,
-					Constants.SCORE_POSITION_HEIGHT);
-			Assets.instance.fonts.defaultBigFonts.draw(batch, "" + "LIVES",
-					Constants.STRING_SCORE_POSITON_WIDTH - 150,
-					Constants.SCORE_POSITION_HEIGHT);
-		}
-	}
-
-	private void renderGuiGameOverMessage(SpriteBatch batch) {
-		float x = cameraGUI.viewportWidth / 2;
-		float y = cameraGUI.viewportHeight / 2;
-		if (controller.isGameOver()==true) {
-			BitmapFont fontGameOver = Assets.instance.fonts.defaultBigFonts;
-			fontGameOver.drawMultiLine(batch, "GAME OVER", x, y, 0,
-					BitmapFont.HAlignment.CENTER);
-
-		}
 	}
 
 }
