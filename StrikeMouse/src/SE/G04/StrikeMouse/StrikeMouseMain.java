@@ -12,7 +12,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL10;
 
 public class StrikeMouseMain implements ApplicationListener {
-	private static final String TAG = StrikeMouseMain.class.getName();
 	private Controller controller;
 	private Renderer renderer;
 	private boolean paused;
@@ -20,7 +19,6 @@ public class StrikeMouseMain implements ApplicationListener {
 	@Override
 	public void create() {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
-
 		Assets.instance.init(new AssetManager());
 
 		controller = new Controller();

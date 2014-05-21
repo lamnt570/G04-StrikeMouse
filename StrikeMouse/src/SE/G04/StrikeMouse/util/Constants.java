@@ -1,7 +1,5 @@
 package SE.G04.StrikeMouse.util;
 
-import com.badlogic.gdx.Gdx;
-
 public class Constants {
 
 	public static final float VIEWPORT_WIDTH = 1;
@@ -10,7 +8,7 @@ public class Constants {
 
 	public static final String TEXTURE_ATLAS_OBJECTS = "images/strikemouse.pack";
 
-	public static final float UPDATE_INTERVAL = 0.12f;
+	public static final float UPDATE_INTERVAL = 0.1f;
 
 	public static final int MAX_ALIVE_MOUSE_IMAGE = 6;
 
@@ -35,8 +33,5 @@ public class Constants {
 	public static final float HAMMER_UPDATE_INTERVAL = 0.05f;
 
 	public static final int MAX_HIT_MOUSE_IMAGE = 3;
-	
-	public static final int LIVES_START = 5;
-	
 
 }

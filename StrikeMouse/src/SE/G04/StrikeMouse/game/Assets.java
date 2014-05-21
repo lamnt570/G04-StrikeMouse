@@ -1,7 +1,5 @@
 package SE.G04.StrikeMouse.game;
 
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetDescriptor;
