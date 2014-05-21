@@ -3,23 +3,9 @@ strikemouse.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-0
-  rotate: false
-  xy: 204, 406
-  size: 172, 148
-  orig: 172, 148
-  offset: 0, 0
-  index: -1
 alive_mouse0
   rotate: false
   xy: 204, 406
-  size: 172, 148
-  orig: 172, 148
-  offset: 0, 0
-  index: -1
-1
-  rotate: false
-  xy: 724, 638
   size: 172, 148
   orig: 172, 148
   offset: 0, 0
@@ -31,23 +17,9 @@ alive_mouse1
   orig: 172, 148
   offset: 0, 0
   index: -1
-2
-  rotate: false
-  xy: 2, 2
-  size: 172, 148
-  orig: 172, 148
-  offset: 0, 0
-  index: -1
 alive_mouse2
   rotate: false
   xy: 2, 2
-  size: 172, 148
-  orig: 172, 148
-  offset: 0, 0
-  index: -1
-3
-  rotate: false
-  xy: 204, 256
   size: 172, 148
   orig: 172, 148
   offset: 0, 0
@@ -59,23 +31,9 @@ alive_mouse3
   orig: 172, 148
   offset: 0, 0
   index: -1
-4
-  rotate: false
-  xy: 378, 406
-  size: 172, 148
-  orig: 172, 148
-  offset: 0, 0
-  index: -1
 alive_mouse4
   rotate: false
   xy: 378, 406
-  size: 172, 148
-  orig: 172, 148
-  offset: 0, 0
-  index: -1
-5
-  rotate: false
-  xy: 378, 256
   size: 172, 148
   orig: 172, 148
   offset: 0, 0
