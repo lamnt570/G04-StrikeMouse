@@ -10,7 +10,6 @@ import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Controller {
-	private static final String TAG = Controller.class.getName();
 
 	private static Random random;
 
@@ -84,8 +83,8 @@ public class Controller {
 	private static final float[] deltaYRatio = { 1.8f, 1f, 0f };
 
 	public void createHolesImagesArray() {
-		holesImages = new Sprite[Constants.HOLE_ROWS][Constants.HOLE_COLUMNS][Constants.MAX_ALIVE_MOUSE_IMAGE
-				+ Constants.MAX_HIT_MOUSE_IMAGE];
+		holesImages = new Sprite[Constants.HOLE_ROWS][Constants.HOLE_COLUMNS]
+				[Constants.MAX_ALIVE_MOUSE_IMAGE + Constants.MAX_HIT_MOUSE_IMAGE];
 
 		for (int i = 0; i < Constants.HOLE_ROWS; i++)
 			for (int j = 0; j < Constants.HOLE_COLUMNS; j++)
@@ -168,7 +167,8 @@ public class Controller {
 
 	public void checkCurrentImage() {
 		if (((mouseIsAlive) && (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE))
-				|| (!mouseIsAlive) && (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE
+				|| (!mouseIsAlive)
+				&& (currentImage == Constants.MAX_ALIVE_MOUSE_IMAGE
 						+ Constants.MAX_HIT_MOUSE_IMAGE)) {
 			holes[currentX][currentY] = holesImages[currentX][currentY][0];
 			currentX = random.nextInt(Constants.HOLE_ROWS);
@@ -184,16 +184,11 @@ public class Controller {
 
 	public float getInputX() {
 		float x = Gdx.input.getX();
-		x /= Gdx.graphics.getWidth();
-		x -= 0.5f;
 		return x;
 	}
 
 	public float getInputY() {
 		float y = Gdx.input.getY();
-		y /= Gdx.graphics.getHeight();
-		y -= 0.5f;
-		y *= -1;
 		return y;
 	}
 
@@ -228,7 +223,8 @@ public class Controller {
 	}
 
 	public void handleUserInput() {
-		if (Gdx.app.getType() == ApplicationType.Desktop) {
+		if ((Gdx.app.getType() == ApplicationType.Desktop)
+				|| (Gdx.app.getType() == ApplicationType.Android)) {
 			if (!hammerIsOn) {
 				if (Gdx.input.isButtonPressed(Buttons.LEFT)) {
 					hammerX = getInputX();
