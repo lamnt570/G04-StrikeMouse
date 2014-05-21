@@ -184,11 +184,16 @@ public class Controller {
 
 	public float getInputX() {
 		float x = Gdx.input.getX();
+		x /= Gdx.graphics.getWidth();
+		x -= 0.5f;
 		return x;
 	}
 
 	public float getInputY() {
 		float y = Gdx.input.getY();
+		y /= Gdx.graphics.getHeight();
+		y -= 0.5f;
+		y *= -1;
 		return y;
 	}
 
